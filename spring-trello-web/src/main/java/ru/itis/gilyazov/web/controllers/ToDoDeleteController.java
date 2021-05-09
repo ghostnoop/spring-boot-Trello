@@ -1,0 +1,37 @@
+package ru.itis.gilyazov.web.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import ru.itis.gilyazov.api.dto.CardDto;
+import ru.itis.gilyazov.api.dto.ToDoDto;
+import ru.itis.gilyazov.api.dto.ToDoForm;
+import ru.itis.gilyazov.api.dto.UserDto;
+import ru.itis.gilyazov.api.services.CardService;
+import ru.itis.gilyazov.api.services.ToDoService;
+import ru.itis.gilyazov.web.exceptions.ToDoNotFoundException;
+
+import javax.servlet.http.HttpSession;
+
+@Controller
+public class ToDoDeleteController {
+
+    @Autowired
+    private ToDoService toDoService;
+
+    @GetMapping("/todo/{id}/delete")
+    public String updateToDo(@PathVariable Long id, HttpSession session) throws ToDoNotFoundException {
+        ToDoDto toDoDto = toDoService.findById(id)
+                .orElseThrow(() -> new ToDoNotFoundException(""));
+
+        UserDto user = (UserDto) session.getAttribute("user");
+
+        if (toDoDto.getCard().getUsers().contains(user)) {
+
+            toDoService.delete(id);
+        }
+
+        return "redirect:/card/" + toDoDto.getCard().getId();
+    }
+}

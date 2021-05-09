@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-trello.iml" filepath="$PROJECT_DIR$/spring-trello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-trello-api/spring-trello-api.iml" filepath="$PROJECT_DIR$/spring-trello-api/spring-trello-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-trello-impl/spring-trello-impl.iml" filepath="$PROJECT_DIR$/spring-trello-impl/spring-trello-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-trello-web/spring-trello-web.iml" filepath="$PROJECT_DIR$/spring-trello-web/spring-trello-web.iml" />
+    </modules>
+  </component>
+</project>
